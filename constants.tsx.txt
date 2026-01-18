@@ -1,0 +1,56 @@
+
+import React from 'react';
+import { Subject, UserProgress } from './types';
+import { Trophy, Atom, Calculator, GraduationCap, Globe } from 'lucide-react';
+
+export const SUBJECTS: { id: Subject; name: string; icon: React.ReactNode; description: string }[] = [
+  { 
+    id: 'GK', 
+    name: 'General Knowledge', 
+    icon: <Globe className="w-6 h-6" />, 
+    description: 'World events, history, and culture.' 
+  },
+  { 
+    id: 'GS', 
+    name: 'General Science', 
+    icon: <Trophy className="w-6 h-6" />, 
+    description: 'Biology, Chemistry, and Environmental Science.' 
+  },
+  { 
+    id: 'Physics', 
+    name: 'Physics', 
+    icon: <Atom className="w-6 h-6" />, 
+    description: 'Laws of motion, energy, and the universe.' 
+  },
+  { 
+    id: 'Mathematics', 
+    name: 'Mathematics', 
+    icon: <Calculator className="w-6 h-6" />, 
+    description: 'Algebra, geometry, and arithmetic reasoning.' 
+  },
+  { 
+    id: 'SSC', 
+    name: 'SSC Exam Prep', 
+    icon: <GraduationCap className="w-6 h-6" />, 
+    description: 'Reasoning, English, and Aptitude.' 
+  },
+];
+
+export const INITIAL_LEVELS_COUNT = 50;
+export const QUESTIONS_PER_LEVEL = 10;
+export const PASS_THRESHOLD = 6;
+
+export const getInitialProgress = (): UserProgress => {
+  const progress: UserProgress = {};
+  SUBJECTS.forEach(sub => {
+    progress[sub.id] = {
+      levels: Array.from({ length: INITIAL_LEVELS_COUNT }, (_, i) => ({
+        level: i + 1,
+        unlocked: i === 0, // Only Level 1 is unlocked initially
+        score: 0,
+        completed: false
+      }))
+    };
+  });
+  return progress;
+};
