@@ -1,8 +1,0 @@
-
-{
-  "name": "Quiz X",
-  "description": "A comprehensive learning and quiz application featuring 1000+ questions across GK, GS, Physics, Mathematics, and SSC exams. Experience structured leveling, instant feedback with haptic patterns, and offline-first progress tracking.",
-  "requestFramePermissions": [
-    "camera"
-  ]
-}
